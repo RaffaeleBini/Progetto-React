@@ -15,7 +15,8 @@ import './index.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* BrowserRouter gestisce il passaggio tra home, dettaglio e 404. */}
-    <BrowserRouter>
+    {/* basename dice al router che l'app vive sotto /Progetto-React/ su GitHub Pages. */}
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       {/* RecipesProvider condivide risultati, loading, errori e ricerca. */}
       <RecipesProvider>
         <App />
