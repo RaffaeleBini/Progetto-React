@@ -1,0 +1,470 @@
+/* Variabili globali:
+   qui definiamo colori, ombre e misure riutilizzabili in tutto il progetto. */
+:root {
+  font-family:
+    'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  color: #183126;
+  background:
+    radial-gradient(circle at top, rgba(205, 233, 188, 0.65), transparent 32%),
+    linear-gradient(180deg, #f4f0e4 0%, #f7f4ea 100%);
+  font-synthesis: none;
+  line-height: 1.5;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --page-max-width: 1180px;
+  --surface: rgba(255, 251, 245, 0.82);
+  --surface-strong: #fffdf8;
+  --border: rgba(24, 49, 38, 0.12);
+  --shadow: 0 18px 60px rgba(57, 71, 48, 0.12);
+  --accent: #426b36;
+  --accent-dark: #26401d;
+  --accent-soft: #ecf4dd;
+  --danger: #b24127;
+}
+
+/* Reset base: box-sizing rende piu prevedibili larghezze e padding. */
+* {
+  box-sizing: border-box;
+}
+
+/* Piccolo miglioramento UX: lo scroll verso un'ancora e piu fluido. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Stili generali del documento. */
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+/* I controlli del form usano lo stesso font del resto del sito. */
+button,
+input {
+  font: inherit;
+}
+
+/* Rimuoviamo la sottolineatura predefinita dei link. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Le immagini non devono mai uscire dal contenitore. */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Il contenitore principale occupa almeno tutta l'altezza della finestra. */
+#root {
+  min-height: 100vh;
+}
+
+/* Struttura esterna dell'app. */
+.app-shell {
+  width: min(var(--page-max-width), calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 2rem 0 4rem;
+}
+
+/* Header principale del sito con griglia a due colonne. */
+.site-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 420px);
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(239, 248, 226, 0.95));
+  box-shadow: var(--shadow);
+}
+
+/* Colonna testuale dell'header. */
+.site-header__content {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Colonna che ospita l'immagine della mascotte. */
+.site-header__media {
+  display: flex;
+  justify-content: center;
+}
+
+/* Stile specifico dell'immagine hero. */
+.site-header__media img {
+  width: min(100%, 380px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 28px;
+  border: 1px solid rgba(24, 49, 38, 0.08);
+  box-shadow: 0 24px 50px rgba(57, 71, 48, 0.16);
+}
+
+/* Piccola etichetta sopra titoli e sezioni. */
+.eyebrow,
+.section-kicker {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* Titoli principali e secondari piu importanti dell'app. */
+.site-header h1,
+.hero-panel h2,
+.detail-hero h2,
+.not-found h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.05;
+  color: #1f3425;
+}
+
+/* Dimensione fluida del titolo principale. */
+.site-header h1 {
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  max-width: 12ch;
+}
+
+/* Testi descrittivi secondari. */
+.intro-copy,
+.section-copy,
+.detail-summary,
+.not-found p,
+.detail-card p,
+.detail-card li {
+  color: rgba(24, 49, 38, 0.82);
+}
+
+/* Distanza tra header e contenuto pagina. */
+.page-content {
+  margin-top: 1.5rem;
+}
+
+/* Layout base delle pagine piu importanti. */
+.home-page,
+.detail-page {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Pannelli riutilizzabili con sfondo chiaro e bordo morbido. */
+.hero-panel,
+.status-message,
+.detail-card,
+.not-found {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+/* Hero della home. */
+.hero-panel {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+
+/* Barra di ricerca con input e pulsante. */
+.search-bar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+}
+
+/* Aspetto dell'input di ricerca. */
+.search-bar input {
+  min-height: 56px;
+  padding: 0 1rem;
+  border: 1px solid rgba(38, 64, 29, 0.2);
+  border-radius: 18px;
+  background: #fffdf8;
+}
+
+/* Stile condiviso per pulsanti principali e ghost button. */
+.search-bar button,
+.suggestions button,
+.ghost-button {
+  border: 0;
+  border-radius: 18px;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease;
+}
+
+/* Pulsanti di ricerca principali. */
+.search-bar button,
+.suggestions button {
+  min-height: 56px;
+  padding: 0.9rem 1.25rem;
+  color: #f7f4ea;
+  background: var(--accent-dark);
+}
+
+/* Leggera animazione al passaggio del mouse. */
+.search-bar button:hover,
+.suggestions button:hover,
+.ghost-button:hover,
+.recipe-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Stato disabilitato durante il caricamento. */
+.search-bar button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* Contenitore dei suggerimenti veloci. */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Variante grafica per i bottoni-suggerimento. */
+.suggestions button {
+  min-height: auto;
+  background: #5b8a49;
+}
+
+/* Box informativo per errori, messaggi iniziali e successi. */
+.status-message {
+  padding: 1rem 1.25rem;
+}
+
+/* Variante errore. */
+.status-message--error {
+  border-color: rgba(178, 65, 39, 0.25);
+  color: var(--danger);
+}
+
+/* Variante successo. */
+.status-message--success {
+  border-color: rgba(66, 107, 54, 0.25);
+  background: rgba(236, 244, 221, 0.9);
+}
+
+/* Griglia responsive delle card ricetta. */
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* Contenitore visivo della singola card. */
+.recipe-card {
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+  box-shadow: var(--shadow);
+  transition: transform 180ms ease;
+}
+
+/* Il link occupa tutta la card per rendere piu facile il click. */
+.recipe-card__link {
+  display: block;
+  height: 100%;
+}
+
+/* Immagine di copertina della ricetta. */
+.recipe-card__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Corpo testuale della card. */
+.recipe-card__body {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+/* Titolo della card. */
+.recipe-card__body h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Testo secondario della card. */
+.recipe-card__body p {
+  margin: 0;
+}
+
+/* Etichetta "Vegetarian". */
+.recipe-chip {
+  justify-self: start;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Pulsanti di navigazione nella pagina dettaglio. */
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Pulsante secondario con stile leggero. */
+.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 1rem;
+  border: 1px solid rgba(38, 64, 29, 0.15);
+  background: rgba(255, 253, 248, 0.85);
+}
+
+/* Hero della pagina dettaglio: immagine piu informazioni. */
+.detail-hero {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+/* Immagine grande della ricetta. */
+.detail-hero img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+/* Colonna destra del dettaglio. */
+.detail-hero__content {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Gruppo di informazioni rapide: tempo, porzioni, tipo di ricetta. */
+.detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Singolo badge informativo nel dettaglio. */
+.detail-meta span {
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+/* Griglia a due colonne per ingredienti e istruzioni. */
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* Card riutilizzata nella pagina dettaglio. */
+.detail-card {
+  padding: 1.5rem;
+}
+
+/* Titolo della card dettaglio. */
+.detail-card h3 {
+  margin-top: 0;
+}
+
+/* Lista ingredienti. */
+.detail-card ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+/* Spaziatura interna delle liste restituite come HTML dalle istruzioni. */
+.instructions-copy ol,
+.instructions-copy ul {
+  padding-left: 1.25rem;
+}
+
+/* Layout semplice della pagina 404. */
+.not-found {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Classe utility per testo nascosto visivamente ma leggibile dagli screen reader. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Breakpoint tablet: alcune griglie diventano a colonna singola. */
+@media (max-width: 860px) {
+  .site-header,
+  .search-bar,
+  .detail-hero,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header,
+  .hero-panel,
+  .detail-hero,
+  .detail-card,
+  .not-found {
+    border-radius: 24px;
+  }
+
+  .site-header__media {
+    order: -1;
+  }
+
+  .site-header__media img {
+    width: min(100%, 320px);
+  }
+}
+
+/* Breakpoint mobile: riduciamo spaziature e larghezze. */
+@media (max-width: 560px) {
+  .app-shell {
+    width: min(var(--page-max-width), calc(100% - 1rem));
+    padding-top: 1rem;
+  }
+
+  .site-header,
+  .hero-panel,
+  .detail-hero,
+  .detail-card,
+  .status-message,
+  .not-found {
+    padding: 1.1rem;
+  }
+
+  .site-header h1 {
+    max-width: none;
+  }
+}
