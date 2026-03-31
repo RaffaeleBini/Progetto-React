@@ -1,16 +1,39 @@
-# React + Vite
+![Logo](https://www.raffaelebini.com/assets/img/LogoRBScuroPiccolo.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![JavaScript](https://img.shields.io/badge/javascript-yellow?logo=javascript)
+![HTML](https://img.shields.io/badge/html-blue?logo=html5)
+![CSS](https://img.shields.io/badge/css-blue?logo=css3)
+![React](https://img.shields.io/badge/react-js?logo=react)
 
-Currently, two official plugins are available:
+# React Project: Vegetarian Recipes APP Chef Hippo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Chef Hippo is a responsive React web app designed for vegetarian users who want to discover new recipes in a simple and enjoyable way. The application connects to the Spoonacular API and allows users to search only for vegetarian recipes, showing a clean interface with recipe cards, images, and a dedicated detail page for each result. The Application was developed as final project for the React course in Start2Impact.
 
-## React Compiler
+## How it works
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The app starts with a search interface where users can type an ingredient or the name of a dish. When a search is submitted, the application sends a request to the Spoonacular API using the complexSearch endpoint with the diet=vegetarian parameter, so that only vegetarian recipes are returned.
 
-## Expanding the ESLint configuration
+The search results are displayed as responsive recipe cards, each showing the recipe title, image, and preparation time when available. When the user clicks on a recipe, the app navigates to a dedicated detail page using React Router. This page fetches additional information from the API, including ingredients, instructions, servings, and cooking time.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The project is built with React, React Router, Axios, and Context API. Context API is used to manage shared state such as search results, loading status, error messages, and the current search term, making the app structure more organized and easier to understand.
+
+## App Link
+
+[Click here to launch the App](https://RaffaeleBini.github.io/Progetto-React)
+
+## Screenshots
+
+![App Screenshot](src/assets/chefhippo.png)
+
+## Author
+
+- [@RaffaeleBini](https://www.github.com/RaffaeleBini)
+
+## 🔗 Links
+
+[![portfolio](https://img.shields.io/badge/my_homepage-000?style=for-the-badge&logo=ko-fi&logoColor=yellow)](https://www.raffaelebini.com/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://https://www.linkedin.com/in/raffaelebini/)
+
+## Feedback
+
+If you have any feedback, please reach out to me at www.raffaelebini.com#6
